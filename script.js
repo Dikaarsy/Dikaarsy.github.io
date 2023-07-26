@@ -1,19 +1,16 @@
-//Toggle class active
-
 const navbarNav = document.querySelector(".navbar-nav");
+const menu = document.querySelector("#hamburger-menu");
 
-//ketika humberger-menu di klik
-
-document.querySelector("#hamburger-menu").onclick = () => {
+// Toggle class active when menu is clicked
+menu.onclick = (e) => {
+  e.preventDefault(); // Prevent default link behavior
   navbarNav.classList.toggle("active");
 };
 
-//klik diluar sidebar untuk menghilangkan nav
-
-const humberger = document.querySelector("#hamburger-menu");
-
-document.addEventListener("click", function (e) {
-  if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+// Close the sidebar when clicking on a menu item
+const menuItems = document.querySelectorAll(".navbar-nav a");
+menuItems.forEach((item) => {
+  item.addEventListener("click", () => {
     navbarNav.classList.remove("active");
-  }
+  });
 });
